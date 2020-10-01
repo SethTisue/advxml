@@ -21,12 +21,11 @@ lazy val global = project
 lazy val settings = Seq(
   name := "Advxml",
   //scala options
-  crossScalaVersions := List("2.12.8", "2.13.0"),
+  crossScalaVersions := List("2.13.3", "2.12.12"),
   scalaVersion       := crossScalaVersions.value.head,
   scalacOptions ++= scalacSettings(scalaVersion.value),
   scalacOptions in (Compile, console) --= Seq(
       "-Ywarn-unused:imports",
-      "-Xfatal-warnings"
     ),
   //coverage
   coverageEnabled in (Test, compile)    := true,
@@ -52,7 +51,6 @@ def scalacSettings(scalaVersion: String) =
     "-language:implicitConversions", // Allow definition of implicit functions called views
     "-unchecked", // Enable additional warnings where generated code depends on assumptions.
     "-Xcheckinit", // Wrap field accessors to throw an exception on uninitialized access.
-    "-Xfatal-warnings", // Fail the compilation if there are any warnings.
     "-Xlint:adapted-args", // Warn if an argument list is modified to match the receiver.
     "-Xlint:constant", // Evaluation of a constant arithmetic expression results in an error.
     "-Xlint:delayedinit-select", // Selecting member of DelayedInit.
